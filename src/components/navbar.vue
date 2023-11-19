@@ -1,35 +1,26 @@
 <script setup lang="ts">
-import heartIcon from "~/assets/icons/heart.svg";
-import cartIcon from "~/assets/icons/cart.svg";
-import accountIcon from "~/assets/icons/account.svg";
-
-import iconButton from "~/components/common/iconButton.vue";
-
-const headerButtons = [
-  {
-    text: "Account",
-    icon: accountIcon,
-  },
-  {
-    text: "Wishlist",
-    icon: heartIcon,
-  },
-  {
-    text: "Cart",
-    icon: cartIcon,
-  },
+const linkButtons = [
+  "Grocery",
+  "Electronics",
+  "Clothing",
+  "Furniture",
+  "Toys & Video games",
+  "Baby",
+  "Beauty",
+  "Personal Car",
+  "Pets",
+  "Sports",
+  "Stationery",
+  "Brands",
 ];
 </script>
 
 <template>
-  <div class="w-full flex justify-between">
-    <p class="text-3xl font-bold">LOGO</p>
-    <div class="flex gap-3">
-      <iconButton
-        v-for="headerButton in headerButtons"
-        :text="headerButton.text"
-        :icon="headerButton.icon"
-      />
+  <div
+    class="w-full flex justify-center gap-10 bg-surface border-b-subtitle border-b-[1px] py-3"
+  >
+    <div v-for="button in linkButtons" class="font-bold">
+      {{ button }}
     </div>
   </div>
 </template>
