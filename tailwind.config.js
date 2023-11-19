@@ -6,6 +6,7 @@ export default {
       colors: {
         surface: "#FBFBFB",
         subtitle: "#C1C1C1",
+        text: "#1B1C1E",
       },
     },
   },
