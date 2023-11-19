@@ -3,13 +3,15 @@ import heartIcon from "~/assets/icons/heart.svg";
 import cartIcon from "~/assets/icons/cart.svg";
 import accountIcon from "~/assets/icons/account.svg";
 
+import iconButton from "~/components/common/iconButton.vue";
+
 const headerButtons = [
   {
     text: "Account",
     icon: accountIcon,
   },
   {
-    text: "Whish List",
+    text: "Wishlist",
     icon: heartIcon,
   },
   {
@@ -23,17 +25,11 @@ const headerButtons = [
   <div class="w-full flex justify-between">
     <p class="text-3xl font-bold">LOGO</p>
     <div class="flex gap-3">
-      <div
+      <iconButton
         v-for="headerButton in headerButtons"
-        class="flex gap-2 items-center"
-      >
-        <img
-          class="w-6 aspect-square"
-          :src="headerButton.icon"
-          :alt="headerButton.text"
-        />
-        <p>{{ headerButton.text }}</p>
-      </div>
+        :text="headerButton.text"
+        :icon="headerButton.icon"
+      />
     </div>
   </div>
 </template>
