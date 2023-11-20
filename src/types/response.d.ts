@@ -14,6 +14,13 @@ export interface Category {
   have_others: boolean;
 }
 
+export interface Brand {
+  id: string;
+  logo: string;
+  products_count: number;
+  title: string;
+}
+
 // Define the main object type
 export interface BaseResponse<D = null> {
   meta: Meta;
