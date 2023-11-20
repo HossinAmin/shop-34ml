@@ -7,7 +7,14 @@ fetchProducts();
 </script>
 
 <template>
-  <div v-if="products" class="flex flex-wrap gap-9 justify-center">
-    <product-grid-item v-for="product in products.data" :product="product" />
+  <div
+    v-if="products"
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-9"
+  >
+    <product-grid-item
+      v-for="product in products.data"
+      :key="product.id"
+      :product="product"
+    />
   </div>
 </template>
