@@ -7,7 +7,7 @@ const searchQuery = ref("");
 
 <template>
   <div class="flex flex-col gap-3">
-    <h3 class="text-text font-bold text-xl">Brand</h3>
+    <h3 class="text-text font-bold text-base">Brand</h3>
     <SearchBar
       v-model:model-value="searchQuery"
       placeholder="Search by brand"

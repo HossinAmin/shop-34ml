@@ -4,9 +4,9 @@ import brandFilter from "~/components/sidebar/filters/brand.vue";
 </script>
 
 <template>
-  <div class="px-9 flex flex-col">
+  <div class="flex flex-col gap-20 px-9">
     <h2 class="px-2 text-text font-bold text-xl">Dining Room Tables</h2>
-    <div class="flex flex-col">
+    <div class="flex flex-col gap-6">
       <category-filter />
       <brand-filter />
     </div>
