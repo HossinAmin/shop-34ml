@@ -2,6 +2,7 @@
 import breadcrum from "./components/breadcrum.vue";
 import navbar from "./components/navbar.vue";
 import topbar from "./components/topbar.vue";
+import sidebar from "./components/sidebar/index.vue";
 </script>
 
 <template>
@@ -9,5 +10,8 @@ import topbar from "./components/topbar.vue";
     <topbar />
     <navbar />
     <breadcrum />
+    <main class="flex">
+      <sidebar />
+    </main>
   </div>
 </template>

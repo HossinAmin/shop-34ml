@@ -6,6 +6,8 @@ export default {
       colors: {
         surface: "#FBFBFB",
         subtitle: "#C1C1C1",
+        inputBg: "#F3F3F3",
+        placeholder: "#1B1C1E",
         text: "#1B1C1E",
       },
     },
