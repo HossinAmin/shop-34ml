@@ -4,7 +4,10 @@ interface Meta {
 }
 
 interface Pagination {
-  // Define Pagination properties if they are expected in the actual data
+  current_page: number;
+  last_page: number;
+  total: number;
+  per_page: number;
 }
 
 export interface Category {
@@ -21,7 +24,40 @@ export interface Brand {
   title: string;
 }
 
-// Define the main object type
+interface Product {
+  id: string;
+  title: string;
+  is_in_stock: boolean;
+  featured_image: string;
+  rating: {
+    product_ratings: number;
+    total_reviews_count: number;
+  };
+  trendy: number;
+  best_seller: number;
+  featured: number;
+  clearance: number;
+  default_variant: {
+    id: string;
+    sku_id: string;
+    title: string;
+    product_title: string;
+    product_id: string;
+    price: string;
+    stock: number;
+    is_in_stock: boolean;
+    is_stock_below_threshold: null | boolean;
+    specs: null | any;
+    image: string;
+    options: {
+      key: string;
+      value: string;
+      title: string;
+      type: number;
+    }[];
+  };
+}
+
 export interface BaseResponse<D = null> {
   meta: Meta;
   data: D;
