@@ -21,13 +21,13 @@ defineProps({
       :alt="product.title"
     />
     <div>
-      <p class="text-lg truncate">{{ product.title }}</p>
-      <p class="text-lg font-bold">{{ product.default_variant.price }}</p>
+      <p class="truncate">{{ product.title }}</p>
+      <p class="font-bold">{{ product.default_variant.price }}</p>
     </div>
     <div
-      class="absolute top-2 right-2 w-8 rounded-full bg-white border-[1px] flex justify-center aspect-square"
+      class="absolute top-2 right-2 lg:w-9 w-6 rounded-full p-1 bg-white border-[1px] flex justify-center items-center aspect-square"
     >
-      <img class="w-5" :src="heartIcon" alt="heart-icon" />
+      <img :src="heartIcon" alt="heart-icon" />
     </div>
   </div>
 </template>
