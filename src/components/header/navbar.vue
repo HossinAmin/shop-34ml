@@ -29,6 +29,6 @@ const linkButtons = [
     </button>
 
     <!-- mobile view -->
-    <SideMenu class="lg:hidden" />
+    <SideMenu />
   </div>
 </template>

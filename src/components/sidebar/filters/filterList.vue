@@ -2,25 +2,26 @@
 import minusIcon from "~/assets/icons/minus.svg";
 import plusIcon from "~/assets/icons/plus.svg";
 
-import { Brand, Category } from "~/types/response";
-
 import SearchBar from "~/components/common/searchBar.vue";
 
 import { PropType } from "vue/dist/vue.js";
 import { ref, computed, defineProps } from "vue";
+import useCategory from "~/composables/useCategory";
 
 const props = defineProps({
   title: {
     type: String,
   },
   list: {
-    type: Array as PropType<Category[] | Brand[]>,
+    type: Array as PropType<any[]>,
   },
 });
 
 const emit = defineEmits<{
-  select: [checked: boolean, item: Category | Brand];
+  select: [checked: boolean, item: any];
 }>();
+const { selectedCategories } = useCategory();
+
 const searchQuery = ref("");
 const expand = ref(true);
 
@@ -33,9 +34,13 @@ const displayedBrands = computed(() => {
   return null;
 });
 
-const handelItemSelect = (e: Event, item: Category | Brand) => {
+const handelItemSelect = (e: Event, item: any) => {
   const target = e.target as HTMLInputElement;
   emit("select", target.checked, item);
+};
+
+const isChecked = (id: string) => {
+  return selectedCategories.value.filter((item) => item.id === id).length !== 0;
 };
 </script>
 
@@ -60,6 +65,7 @@ const handelItemSelect = (e: Event, item: Category | Brand) => {
           <input
             class="w-4"
             type="checkbox"
+            :checked="isChecked(item.id)"
             @change="(e: Event) => handelItemSelect(e,item)"
           />
           <p>{{ item.title }}</p>
