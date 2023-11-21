@@ -22,9 +22,9 @@ const headerButtons = [
 </script>
 
 <template>
-  <div class="w-full flex justify-between px-14 py-5">
-    <p class="text-3xl font-bold">LOGO</p>
-    <div class="flex gap-6">
+  <div class="w-full flex justify-between md:px-14 px-5 py-4">
+    <p class="logo-text">LOGO</p>
+    <div class="flex gap-2 md:gap-6">
       <iconButton
         v-for="headerButton in headerButtons"
         :text="headerButton.text"
@@ -33,3 +33,9 @@ const headerButtons = [
     </div>
   </div>
 </template>
+
+<style scoped>
+.logo-text {
+  @apply text-[20px] md:text-[25px] font-bold;
+}
+</style>

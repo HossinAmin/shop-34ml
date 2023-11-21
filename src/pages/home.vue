@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import breadcrum from "~/components/breadcrum.vue";
-import navbar from "~/components/navbar.vue";
-import topbar from "~/components/topbar.vue";
+import breadcrum from "~/components/header/breadcrum.vue";
+import navbar from "~/components/header/navbar.vue";
+import topbar from "~/components/header/topbar.vue";
 import sidebar from "~/components/sidebar/index.vue";
 import ProductsGrid from "~/components/product/grid.vue";
 import paginationButtonsGroup from "~/components/pagination/buttonsGroup.vue";
