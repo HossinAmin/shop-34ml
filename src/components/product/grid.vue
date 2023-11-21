@@ -7,15 +7,19 @@ const { products } = useProducts();
 </script>
 
 <template>
-  <div v-if="products" class="grid md:grid-cols-2 lg:grid-cols-4 gap-9">
+  <div
+    v-if="products"
+    class="grid grid-cols-2 lg:grid-cols-4 gap-9 lg:text-lg text-xs"
+  >
     <product-grid-item
       v-for="product in products.data"
       :key="product.id"
       :product="product"
     />
   </div>
-  <div v-else class="text-9xl font-bold m-auto">loading....</div>
+  <div v-else class="text-5xl font-semibold m-auto">loading....</div>
 
+  <!-- empty container indicator -->
   <div
     v-if="products?.data.length === 0"
     class="w-full flex flex-col justify-center items-center"

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import breadcrum from "~/components/breadcrum.vue";
-import navbar from "~/components/navbar.vue";
-import topbar from "~/components/topbar.vue";
+import breadcrum from "~/components/header/breadcrum.vue";
+import navbar from "~/components/header/navbar.vue";
+import topbar from "~/components/header/topbar.vue";
 import sidebar from "~/components/sidebar/index.vue";
 import ProductsGrid from "~/components/product/grid.vue";
 import paginationButtonsGroup from "~/components/pagination/buttonsGroup.vue";
@@ -12,11 +12,11 @@ import paginationButtonsGroup from "~/components/pagination/buttonsGroup.vue";
     <topbar />
     <navbar />
     <breadcrum />
-    <main class="flex px-9 gap-5">
+    <main class="flex w-full px-9 gap-5">
       <sidebar />
       <products-grid />
     </main>
-    <footer class="py-5">
+    <footer class="py-8">
       <pagination-buttons-group />
     </footer>
   </div>

@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        primary: "#00ABEB",
         surface: "#FBFBFB",
         subtitle: "#C1C1C1",
         inputBg: "#F3F3F3",

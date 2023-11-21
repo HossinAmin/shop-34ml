@@ -31,7 +31,7 @@ defineProps({
 
 <style>
 .text-button {
-  @apply flex justify-center items-center px-4 aspect-square rounded-md border-subtitle border-[1px] hover:opacity-50;
+  @apply flex justify-center items-center lg:w-10 w-8 aspect-square rounded-md border-subtitle border-[1px] hover:opacity-50;
 }
 .disabled-button {
   @apply cursor-not-allowed opacity-50;

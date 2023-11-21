@@ -4,7 +4,7 @@ defineProps(["icon", "text"]);
 
 <template>
   <div class="flex gap-1 items-center">
-    <img class="w-6 aspect-square" :src="icon" :alt="text" />
-    <p>{{ text }}</p>
+    <img class="lg:w-6 w-5 object-fill aspect-square" :src="icon" :alt="text" />
+    <p class="hidden md:inline-block">{{ text }}</p>
   </div>
 </template>

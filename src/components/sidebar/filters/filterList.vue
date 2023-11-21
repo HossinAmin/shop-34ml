@@ -32,21 +32,22 @@ const displayedBrands = computed(() => {
 </script>
 
 <template>
-  <div class="flex w-full flex-col gap-3">
+  <div class="flex w-full flex-col gap-3 border-b-subtitle border-b-[1px] py-5">
     <div class="flex justify-between items-center">
       <h3 class="text-text font-bold text-base">{{ title }}</h3>
       <button @click="expand = !expand">
         <img :src="expand ? minusIcon : plusIcon" alt="expand-button" />
       </button>
     </div>
+
+    <!-- dropdown -->
     <template v-if="expand">
       <SearchBar
         v-model:model-value="searchQuery"
         placeholder="Search by category"
       />
-      <!-- list -->
+
       <div v-if="list" class="flex flex-col gap-3">
-        <!-- item -->
         <div v-for="item in displayedBrands" class="flex gap-1">
           <input class="w-4" type="checkbox" />
           <p>{{ item.title }}</p>
