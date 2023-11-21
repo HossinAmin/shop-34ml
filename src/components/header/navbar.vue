@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import menuIcon from "~/assets/icons/menu.svg";
-
-import IconButton from "~/components/common/iconButton.vue";
+import SideMenu from "~/components/sideMenu.vue";
 
 const linkButtons = [
   "Grocery",
@@ -31,6 +29,6 @@ const linkButtons = [
     </button>
 
     <!-- mobile view -->
-    <IconButton class="lg-hidden" :icon="menuIcon" />
+    <SideMenu class="lg:hidden" />
   </div>
 </template>
