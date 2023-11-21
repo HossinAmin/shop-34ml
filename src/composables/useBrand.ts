@@ -3,6 +3,8 @@ import { ref } from "vue";
 
 const api = "https://joulia.dashboard.hamburgermenu.app/api/v1/brands";
 
+const selectedBrands = ref<Brand[]>([]);
+
 export default function useBrand() {
   const brands = ref<BaseResponse<Brand[]> | null>(null);
 
@@ -12,5 +14,5 @@ export default function useBrand() {
     brands.value = await res.json();
   };
 
-  return { brands, fetchBrands };
+  return { brands, selectedBrands, fetchBrands };
 }
