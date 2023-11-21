@@ -18,6 +18,9 @@ const props = defineProps({
   },
 });
 
+const emit = defineEmits<{
+  select: [checked: boolean, item: Category | Brand];
+}>();
 const searchQuery = ref("");
 const expand = ref(true);
 
@@ -29,6 +32,11 @@ const displayedBrands = computed(() => {
   }
   return null;
 });
+
+const handelItemSelect = (e: Event, item: Category | Brand) => {
+  const target = e.target as HTMLInputElement;
+  emit("select", target.checked, item);
+};
 </script>
 
 <template>
@@ -49,7 +57,11 @@ const displayedBrands = computed(() => {
 
       <div v-if="list" class="flex flex-col gap-3">
         <div v-for="item in displayedBrands" class="flex gap-1">
-          <input class="w-4" type="checkbox" />
+          <input
+            class="w-4"
+            type="checkbox"
+            @change="(e: Event) => handelItemSelect(e,item)"
+          />
           <p>{{ item.title }}</p>
         </div>
       </div>
