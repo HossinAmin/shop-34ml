@@ -14,12 +14,13 @@ defineProps({
 </script>
 
 <template>
-  <div class="relative flex flex-col gap-6">
-    <img
-      class="object-contain rounded-md"
-      :src="product.default_variant.image || noImageIcon"
-      :alt="product.title"
-    />
+  <div class="relative flex flex-col justify-between gap-6">
+    <div class="rounded-md">
+      <img
+        :src="product.default_variant.image || noImageIcon"
+        :alt="product.title"
+      />
+    </div>
     <div>
       <p class="truncate">{{ product.title }}</p>
       <p class="font-bold">{{ product.default_variant.price }}</p>

@@ -15,7 +15,7 @@ import filterbar from "~/components/filterbar.vue";
     <breadcrum />
     <main class="flex w-full px-9 gap-5">
       <sidebar />
-      <div class="flex flex-col w-full">
+      <div class="flex flex-col py-20 w-full">
         <filterbar />
         <products-grid />
       </div>
