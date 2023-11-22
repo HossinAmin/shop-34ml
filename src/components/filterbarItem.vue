@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { PropType } from "vue";
-import closeIcon from "~/assets/icons/close.svg";
 import { Brand, Category } from "~/types/response";
+
+import closeIcon from "~/assets/icons/close.svg";
+
+import { PropType } from "vue";
 
 defineProps({
   item: {
@@ -12,7 +14,9 @@ defineProps({
 </script>
 
 <template>
-  <div class="bg-surface rounded flex justify-center items-center gap-2 p-2">
+  <div
+    class="bg-surface rounded flex justify-center items-center text-xs gap-2 p-2"
+  >
     <span class="whitespace-nowrap">{{ item.title }}</span>
     <img
       class="min-w-5 aspect-square cursor-pointer"
