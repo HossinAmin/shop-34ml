@@ -46,14 +46,14 @@ const clearAllFilters = () => {
 
       <IconButton @click="closeMenu" :icon="closeIcon" />
     </div>
-    <div class="flex flex-col px-5">
+    <div class="flex flex-col px-5 flex-1">
       <CategoryFilter />
       <Brand />
     </div>
-    <div class="flex justify-center w-full px-5 gap-3.5">
+    <div class="flex justify-center w-full p-5 gap-3.5">
       <PrimaryButton
         @click="clearAllFilters"
-        class="bg-transparent text-primary"
+        class="bg-transparent !text-primary"
         text="Clear All"
       />
       <PrimaryButton

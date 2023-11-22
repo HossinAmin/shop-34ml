@@ -9,7 +9,7 @@ const { products } = useProducts();
 <template>
   <div
     v-if="products"
-    class="grid grid-cols-2 lg:grid-cols-4 gap-9 lg:text-lg text-xs"
+    class="grid grid-cols-2 md:grid-cols-4 gap-9 md:text-lg text-xs"
   >
     <product-grid-item
       v-for="product in products.data"

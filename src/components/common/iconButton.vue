@@ -6,7 +6,7 @@ defineProps(["icon", "text"]);
   <div class="flex gap-1 items-center">
     <img
       v-if="icon"
-      class="lg:min-w-6 min-w-5 aspect-square"
+      class="md:min-w-6 min-w-5 aspect-square"
       :src="icon"
       :alt="text"
     />

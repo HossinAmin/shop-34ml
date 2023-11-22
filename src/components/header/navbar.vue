@@ -19,7 +19,7 @@ const linkButtons = [
 
 <template>
   <div
-    class="w-full flex lg:justify-center gap-10 lg:bg-surface border-b-subtitle border-b-[1px] py-3 px-5"
+    class="w-full flex lg:justify-center gap-10 lg:bg-surface border-b-subtitle border-b-[1px] lg:py-3 pb-3 px-5"
   >
     <button
       v-for="button in linkButtons"
