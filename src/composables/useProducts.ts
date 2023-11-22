@@ -37,6 +37,7 @@ export default function useProduct() {
     };
 
     const customAPI = buildApiUrl(api, params);
+    console.log(customAPI);
     fetchProducts(customAPI);
   });
 
