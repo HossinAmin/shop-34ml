@@ -2,7 +2,6 @@
 import { PropType } from "vue";
 import closeIcon from "~/assets/icons/close.svg";
 import { Brand, Category } from "~/types/response";
-import IconButton from "./common/iconButton.vue";
 
 defineProps({
   item: {
@@ -14,8 +13,11 @@ defineProps({
 
 <template>
   <div class="bg-surface rounded flex justify-center items-center gap-2 p-2">
-    <span>{{ item.title }}</span>
-
-    <icon-button @click="$emit('remove')" :icon="closeIcon" />
+    <span class="whitespace-nowrap">{{ item.title }}</span>
+    <img
+      class="min-w-5 aspect-square cursor-pointer"
+      @click="$emit('remove')"
+      :src="closeIcon"
+    />
   </div>
 </template>
