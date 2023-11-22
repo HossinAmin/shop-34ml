@@ -6,14 +6,20 @@ import PrimaryButton from "./common/primaryButton.vue";
 import useProducts from "~/composables/useProducts";
 import FilterbarItem from "./filterbarItem.vue";
 import useCategory from "~/composables/useCategory";
+import useBrand from "~/composables/useBrand";
 
 const { products } = useProducts();
 const { selectedCategories } = useCategory();
+const { selectedBrands } = useBrand();
 
-const handelRemoveItem = (id: string) => {
+const handelRemoveCategory = (id: string) => {
   selectedCategories.value = selectedCategories.value.filter(
     (item) => item.id !== id
   );
+};
+
+const handelRemoveBrand = (id: string) => {
+  selectedBrands.value = selectedBrands.value.filter((item) => item.id !== id);
 };
 </script>
 
@@ -27,9 +33,14 @@ const handelRemoveItem = (id: string) => {
 
     <div class="flex gap-2">
       <FilterbarItem
-        v-for="item in selectedCategories"
-        :item="item"
-        @remove="handelRemoveItem(item.id)"
+        v-for="category in selectedCategories"
+        :item="category"
+        @remove="handelRemoveCategory(category.id)"
+      />
+      <FilterbarItem
+        v-for="brand in selectedBrands"
+        :item="brand"
+        @remove="handelRemoveBrand(brand.id)"
       />
     </div>
 
