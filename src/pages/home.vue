@@ -5,6 +5,7 @@ import topbar from "~/components/header/topbar.vue";
 import sidebar from "~/components/sidebar/index.vue";
 import ProductsGrid from "~/components/product/grid.vue";
 import paginationButtonsGroup from "~/components/pagination/buttonsGroup.vue";
+import filterbar from "~/components/filterbar.vue";
 </script>
 
 <template>
@@ -14,7 +15,10 @@ import paginationButtonsGroup from "~/components/pagination/buttonsGroup.vue";
     <breadcrum />
     <main class="flex w-full px-9 gap-5">
       <sidebar />
-      <products-grid />
+      <div class="flex flex-col w-full">
+        <filterbar />
+        <products-grid />
+      </div>
     </main>
     <footer class="py-8">
       <pagination-buttons-group />
