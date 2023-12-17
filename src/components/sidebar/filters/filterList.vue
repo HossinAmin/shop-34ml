@@ -4,8 +4,7 @@ import plusIcon from "~/assets/icons/plus.svg";
 
 import SearchBar from "~/components/common/searchBar.vue";
 
-import { PropType } from "vue/dist/vue.js";
-import { ref, computed, defineProps } from "vue";
+import { ref, computed, PropType } from "vue";
 import useCategory from "~/composables/useCategory";
 import useBrand from "~/composables/useBrand";
 

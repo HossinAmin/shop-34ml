@@ -3,17 +3,17 @@ import { computed, ref } from "vue";
 import leftArrow from "~/assets/icons/left-arrow.svg";
 import rightArrow from "~/assets/icons/right-arrow.svg";
 import { useRoute, useRouter } from "vue-router";
-import useProducts from "~/composables/useProducts";
+import { useProductsStore } from "~/store/useProductsStore";
 import TextButton from "../common/textButton.vue";
 
 const router = useRouter();
 const route = useRoute();
-const { products } = useProducts();
+const productsStore = useProductsStore();
 
 const currentPage = ref(Number(route.query.page) || 1);
 
 const totalPages = computed(() => {
-  return products.value?.pagination.total || 3;
+  return productsStore.products?.pagination.total || 3;
 });
 
 const displayedPages = computed(() => {

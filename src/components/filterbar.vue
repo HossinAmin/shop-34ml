@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import filterIcon from "~/assets/icons/filter.svg";
 
-import useProducts from "~/composables/useProducts";
+import { useProductsStore } from "~/store/useProductsStore";
 import useCategory from "~/composables/useCategory";
 import useBrand from "~/composables/useBrand";
 
@@ -9,7 +9,7 @@ import FilterbarItem from "./filterbarItem.vue";
 
 import { computed } from "vue";
 
-const { products } = useProducts();
+const productsStore = useProductsStore();
 const { selectedCategories } = useCategory();
 const { selectedBrands } = useBrand();
 
@@ -59,7 +59,9 @@ const handelRemoveBrand = (id: string) => {
         </div>
       </div>
 
-      <p class="px-2 whitespace-nowrap">{{ products?.data.length }} Items</p>
+      <p class="px-2 whitespace-nowrap">
+        {{ productsStore.productsCount }} Items
+      </p>
     </div>
   </div>
 </template>

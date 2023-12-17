@@ -1,26 +1,29 @@
 import { BaseResponse, Product } from "~/types/response";
 
-import { ref, watchEffect } from "vue";
+import { defineStore } from "pinia";
+import { computed, ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 
-import useCategory from "./useCategory";
-import useBrand from "./useBrand";
+import useCategory from "~/composables/useCategory";
+import useBrand from "~/composables/useBrand";
 
 import { buildApiUrl } from "~/utils/apiBuild";
 
 const api = "https://joulia.dashboard.hamburgermenu.app/api/v1/products";
-const products = ref<BaseResponse<Product[]> | null>(null);
 
-export default function useProduct() {
+export const useProductsStore = defineStore("products-store", () => {
+  const products = ref<BaseResponse<Product[]> | null>(null);
+  const productsCount = computed(() => products.value?.data.length);
+
   const route = useRoute();
   const { selectedCategories } = useCategory();
   const { selectedBrands } = useBrand();
 
   // TODO: add error handling
-  const fetchProducts = async (customAPI?: string) => {
+  const fetchProducts = async (customAPI: string) => {
     products.value = null;
 
-    const res = await fetch(customAPI || api);
+    const res = await fetch(customAPI);
     const data = await res.json();
 
     products.value = data;
@@ -37,9 +40,8 @@ export default function useProduct() {
     };
 
     const customAPI = buildApiUrl(api, params);
-    console.log(customAPI);
     fetchProducts(customAPI);
   });
 
-  return { products, fetchProducts };
-}
+  return { products, productsCount, fetchProducts };
+});
