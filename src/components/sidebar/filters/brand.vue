@@ -3,16 +3,16 @@ import { Brand } from "~/types/response";
 import FilterList from "./filterList.vue";
 
 import useBrand from "~/composables/useBrand";
+import { useSelectedBrandsStore } from "~/store/useSelectedBrandsStore";
 
-const { brands, selectedBrands, fetchBrands } = useBrand();
+const { brands, fetchBrands } = useBrand();
+const selectedBrandsStore = useSelectedBrandsStore();
 
-const handelSelectBrand = (checked: boolean, category: Brand) => {
+const handelSelectBrand = (checked: boolean, brand: Brand) => {
   if (checked) {
-    selectedBrands.value.push(category);
+    selectedBrandsStore.addBrand(brand);
   } else {
-    selectedBrands.value = selectedBrands.value.filter(
-      (item) => item.id !== category.id
-    );
+    selectedBrandsStore.removeBrand(brand);
   }
 };
 

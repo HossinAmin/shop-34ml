@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import noItemImg from "~/assets/images/emptyBox.png";
-import useProducts from "~/composables/useProducts";
+import { useProductsStore } from "~/store/useProductsStore";
 import ProductGridItem from "./gridItem.vue";
 
-const { products } = useProducts();
+const productsStore = useProductsStore();
 </script>
 
 <template>
   <div
-    v-if="products"
+    v-if="productsStore.products"
     class="grid grid-cols-2 md:grid-cols-4 gap-9 md:text-lg text-xs"
   >
     <product-grid-item
-      v-for="product in products.data"
+      v-for="product in productsStore.products.data"
       :key="product.id"
       :product="product"
     />
@@ -21,7 +21,7 @@ const { products } = useProducts();
 
   <!-- empty container indicator -->
   <div
-    v-if="products?.data.length === 0"
+    v-if="productsStore.products?.data.length === 0"
     class="w-full flex flex-col justify-center items-center"
   >
     <p class="text-4xl font-semibold py-10">No items in this page</p>

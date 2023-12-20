@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import searchIcon from "~/assets/icons/search.svg";
-import { defineProps, defineEmits } from "vue";
 
 const props = defineProps({
   modelValue: {

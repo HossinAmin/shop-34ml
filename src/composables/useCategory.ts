@@ -3,8 +3,6 @@ import { ref } from "vue";
 
 const api = "https://joulia.dashboard.hamburgermenu.app/api/v1/categories";
 
-const selectedCategories = ref<Category[]>([]);
-
 export default function useCategory() {
   const categories = ref<BaseResponse<Category[]> | null>(null);
 
@@ -14,5 +12,5 @@ export default function useCategory() {
     categories.value = await res.json();
   };
 
-  return { categories, selectedCategories, fetchCategories };
+  return { categories, fetchCategories };
 }

@@ -4,10 +4,9 @@ import plusIcon from "~/assets/icons/plus.svg";
 
 import SearchBar from "~/components/common/searchBar.vue";
 
-import { PropType } from "vue/dist/vue.js";
-import { ref, computed, defineProps } from "vue";
-import useCategory from "~/composables/useCategory";
-import useBrand from "~/composables/useBrand";
+import { ref, computed, PropType } from "vue";
+import { useSelectedBrandsStore } from "~/store/useSelectedBrandsStore";
+import { useSelectedCategoriesStore } from "~/store/useSelectedCategoriesStore";
 
 const props = defineProps({
   title: {
@@ -21,9 +20,8 @@ const props = defineProps({
 const emit = defineEmits<{
   select: [checked: boolean, item: any];
 }>();
-const { selectedCategories } = useCategory();
-const { selectedBrands } = useBrand();
-
+const selectedCategoriesStore = useSelectedCategoriesStore();
+const selectedBrandsStore = useSelectedBrandsStore();
 const searchQuery = ref("");
 const expand = ref(true);
 
@@ -43,8 +41,10 @@ const handelItemSelect = (e: Event, item: any) => {
 
 const isChecked = (id: string) => {
   return (
-    selectedCategories.value.filter((item) => item.id === id).length !== 0 ||
-    selectedBrands.value.filter((item) => item.id === id).length !== 0
+    selectedCategoriesStore.selectedCategories.filter((item) => item.id === id)
+      .length !== 0 ||
+    selectedBrandsStore.selectedBrands.filter((item) => item.id === id)
+      .length !== 0
   );
 };
 </script>

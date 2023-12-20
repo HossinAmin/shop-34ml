@@ -9,15 +9,15 @@ import Brand from "./sidebar/filters/brand.vue";
 import PrimaryButton from "~/components/common/primaryButton.vue";
 
 import { ref } from "vue";
-import useProduct from "~/composables/useProducts";
-import useBrand from "~/composables/useBrand";
-import useCategory from "~/composables/useCategory";
+import { useProductsStore } from "~/store/useProductsStore";
+import { useSelectedBrandsStore } from "~/store/useSelectedBrandsStore";
+import { useSelectedCategoriesStore } from "~/store/useSelectedCategoriesStore";
 
 const isMenuOpen = ref(false);
 
-const { products } = useProduct();
-const { selectedBrands } = useBrand();
-const { selectedCategories } = useCategory();
+const productsStore = useProductsStore();
+const selectedCategoriesStore = useSelectedCategoriesStore();
+const selectedBrandsStore = useSelectedBrandsStore();
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
@@ -28,8 +28,8 @@ const closeMenu = () => {
 };
 
 const clearAllFilters = () => {
-  selectedBrands.value = [];
-  selectedCategories.value = [];
+  selectedBrandsStore.selectedBrands = [];
+  selectedCategoriesStore.selectedCategories = [];
 };
 </script>
 
@@ -59,7 +59,7 @@ const clearAllFilters = () => {
       <PrimaryButton
         @click="closeMenu"
         class="flex-1"
-        :text="`View All ${products?.data.length || 0} Items`"
+        :text="`View All ${productsStore.productsCount || 0} Items`"
       />
     </div>
   </div>

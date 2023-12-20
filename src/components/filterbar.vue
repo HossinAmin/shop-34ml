@@ -1,35 +1,27 @@
 <script setup lang="ts">
 import filterIcon from "~/assets/icons/filter.svg";
 
-import useProducts from "~/composables/useProducts";
-import useCategory from "~/composables/useCategory";
-import useBrand from "~/composables/useBrand";
+import { useProductsStore } from "~/store/useProductsStore";
+import { useSelectedBrandsStore } from "~/store/useSelectedBrandsStore";
+import { useSelectedCategoriesStore } from "~/store/useSelectedCategoriesStore";
 
 import FilterbarItem from "./filterbarItem.vue";
 
 import { computed } from "vue";
 
-const { products } = useProducts();
-const { selectedCategories } = useCategory();
-const { selectedBrands } = useBrand();
+const productsStore = useProductsStore();
+const selectedCategoriesStore = useSelectedCategoriesStore();
+const selectedBrandsStore = useSelectedBrandsStore();
 
 const filterCount = computed(() => {
-  const count = selectedBrands.value?.length + selectedCategories.value?.length;
+  const count =
+    selectedBrandsStore.selectedBrandsLength +
+    selectedCategoriesStore.selectedCategoriesLength;
   if (count > 0) {
     return `(${count})`;
   }
   return null;
 });
-
-const handelRemoveCategory = (id: string) => {
-  selectedCategories.value = selectedCategories.value.filter(
-    (item) => item.id !== id
-  );
-};
-
-const handelRemoveBrand = (id: string) => {
-  selectedBrands.value = selectedBrands.value.filter((item) => item.id !== id);
-};
 </script>
 
 <template>
@@ -47,19 +39,21 @@ const handelRemoveBrand = (id: string) => {
       <div class="overflow-x-auto scrollbar-hidden">
         <div class="flex justify-start items-center gap-2 flex-nowrap">
           <FilterbarItem
-            v-for="category in selectedCategories"
+            v-for="category in selectedCategoriesStore.selectedCategories"
             :item="category"
-            @remove="handelRemoveCategory(category.id)"
+            @remove="selectedCategoriesStore.removeCategory(category)"
           />
           <FilterbarItem
-            v-for="brand in selectedBrands"
+            v-for="brand in selectedBrandsStore.selectedBrands"
             :item="brand"
-            @remove="handelRemoveBrand(brand.id)"
+            @remove="selectedBrandsStore.removeBrand(brand)"
           />
         </div>
       </div>
 
-      <p class="px-2 whitespace-nowrap">{{ products?.data.length }} Items</p>
+      <p class="px-2 whitespace-nowrap">
+        {{ productsStore.productsCount }} Items
+      </p>
     </div>
   </div>
 </template>
