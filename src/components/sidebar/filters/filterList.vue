@@ -6,7 +6,7 @@ import SearchBar from "~/components/common/searchBar.vue";
 
 import { ref, computed, PropType } from "vue";
 import useCategory from "~/composables/useCategory";
-import useBrand from "~/composables/useBrand";
+import { useSelectedBrandsStore } from "~/store/useSelectedBrandsStore";
 
 const props = defineProps({
   title: {
@@ -21,8 +21,7 @@ const emit = defineEmits<{
   select: [checked: boolean, item: any];
 }>();
 const { selectedCategories } = useCategory();
-const { selectedBrands } = useBrand();
-
+const selectedBrandsStore = useSelectedBrandsStore();
 const searchQuery = ref("");
 const expand = ref(true);
 
@@ -43,7 +42,8 @@ const handelItemSelect = (e: Event, item: any) => {
 const isChecked = (id: string) => {
   return (
     selectedCategories.value.filter((item) => item.id === id).length !== 0 ||
-    selectedBrands.value.filter((item) => item.id === id).length !== 0
+    selectedBrandsStore.selectedBrands.filter((item) => item.id === id)
+      .length !== 0
   );
 };
 </script>

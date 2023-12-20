@@ -10,14 +10,14 @@ import PrimaryButton from "~/components/common/primaryButton.vue";
 
 import { ref } from "vue";
 import { useProductsStore } from "~/store/useProductsStore";
-import useBrand from "~/composables/useBrand";
 import useCategory from "~/composables/useCategory";
+import { useSelectedBrandsStore } from "~/store/useSelectedBrandsStore";
 
 const isMenuOpen = ref(false);
 
 const productsStore = useProductsStore();
-const { selectedBrands } = useBrand();
 const { selectedCategories } = useCategory();
+const selectedBrandsStore = useSelectedBrandsStore();
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
@@ -28,7 +28,7 @@ const closeMenu = () => {
 };
 
 const clearAllFilters = () => {
-  selectedBrands.value = [];
+  selectedBrandsStore.selectedBrands = [];
   selectedCategories.value = [];
 };
 </script>

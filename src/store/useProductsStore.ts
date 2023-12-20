@@ -5,9 +5,9 @@ import { computed, ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 
 import useCategory from "~/composables/useCategory";
-import useBrand from "~/composables/useBrand";
 
 import { buildApiUrl } from "~/utils/apiBuild";
+import { useSelectedBrandsStore } from "./useSelectedBrandsStore";
 
 const api = "https://joulia.dashboard.hamburgermenu.app/api/v1/products";
 
@@ -17,8 +17,7 @@ export const useProductsStore = defineStore("products-store", () => {
 
   const route = useRoute();
   const { selectedCategories } = useCategory();
-  const { selectedBrands } = useBrand();
-
+  const selectedBrandsStore = useSelectedBrandsStore();
   // TODO: add error handling
   const fetchProducts = async (customAPI: string) => {
     products.value = null;
@@ -36,7 +35,9 @@ export const useProductsStore = defineStore("products-store", () => {
       "filter[categories]": selectedCategories.value.map(
         (category) => category.id
       ),
-      "filter[brands]": selectedBrands.value.map((brand) => brand.id),
+      "filter[brands]": selectedBrandsStore.selectedBrands.map(
+        (brand) => brand.id
+      ),
     };
 
     const customAPI = buildApiUrl(api, params);
