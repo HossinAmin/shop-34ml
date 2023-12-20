@@ -14,7 +14,7 @@ export const useSelectedBrandsStore = defineStore("selected-brands-store", {
     },
     removeBrand(brand: Brand) {
       this.selectedBrands = this.selectedBrands.filter(
-        (item) => item.id != brand.id
+        (item) => item.id !== brand.id
       );
     },
   },
