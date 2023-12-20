@@ -4,10 +4,9 @@ import { defineStore } from "pinia";
 import { computed, ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 
-import useCategory from "~/composables/useCategory";
-
 import { buildApiUrl } from "~/utils/apiBuild";
 import { useSelectedBrandsStore } from "./useSelectedBrandsStore";
+import { useSelectedCategoriesStore } from "./useSelectedCategoriesStore";
 
 const api = "https://joulia.dashboard.hamburgermenu.app/api/v1/products";
 
@@ -16,7 +15,7 @@ export const useProductsStore = defineStore("products-store", () => {
   const productsCount = computed(() => products.value?.data.length);
 
   const route = useRoute();
-  const { selectedCategories } = useCategory();
+  const selectedCategoriesStore = useSelectedCategoriesStore();
   const selectedBrandsStore = useSelectedBrandsStore();
   // TODO: add error handling
   const fetchProducts = async (customAPI: string) => {
@@ -32,7 +31,7 @@ export const useProductsStore = defineStore("products-store", () => {
   watchEffect(() => {
     const params = {
       page: route.query.page,
-      "filter[categories]": selectedCategories.value.map(
+      "filter[categories]": selectedCategoriesStore.selectedCategories.map(
         (category) => category.id
       ),
       "filter[brands]": selectedBrandsStore.selectedBrands.map(

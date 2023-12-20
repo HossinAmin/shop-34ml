@@ -1,32 +1,27 @@
 <script setup lang="ts">
 import filterIcon from "~/assets/icons/filter.svg";
 
-import { useSelectedBrandsStore } from "~/store/useSelectedBrandsStore";
 import { useProductsStore } from "~/store/useProductsStore";
-import useCategory from "~/composables/useCategory";
+import { useSelectedBrandsStore } from "~/store/useSelectedBrandsStore";
+import { useSelectedCategoriesStore } from "~/store/useSelectedCategoriesStore";
 
 import FilterbarItem from "./filterbarItem.vue";
 
 import { computed } from "vue";
 
 const productsStore = useProductsStore();
-const { selectedCategories } = useCategory();
+const selectedCategoriesStore = useSelectedCategoriesStore();
 const selectedBrandsStore = useSelectedBrandsStore();
 
 const filterCount = computed(() => {
   const count =
-    selectedBrandsStore.selectedBrandsLength + selectedCategories.value?.length;
+    selectedBrandsStore.selectedBrandsLength +
+    selectedCategoriesStore.selectedCategoriesLength;
   if (count > 0) {
     return `(${count})`;
   }
   return null;
 });
-
-const handelRemoveCategory = (id: string) => {
-  selectedCategories.value = selectedCategories.value.filter(
-    (item) => item.id !== id
-  );
-};
 </script>
 
 <template>
@@ -44,9 +39,9 @@ const handelRemoveCategory = (id: string) => {
       <div class="overflow-x-auto scrollbar-hidden">
         <div class="flex justify-start items-center gap-2 flex-nowrap">
           <FilterbarItem
-            v-for="category in selectedCategories"
+            v-for="category in selectedCategoriesStore.selectedCategories"
             :item="category"
-            @remove="handelRemoveCategory(category.id)"
+            @remove="selectedCategoriesStore.removeCategory(category)"
           />
           <FilterbarItem
             v-for="brand in selectedBrandsStore.selectedBrands"
