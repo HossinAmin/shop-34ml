@@ -32,10 +32,10 @@ export const useProductsStore = defineStore("products-store", () => {
     const params = {
       page: route.query.page,
       "filter[categories]": selectedCategoriesStore.selectedCategories.map(
-        (category) => category.id
+        (category) => category.id,
       ),
       "filter[brands]": selectedBrandsStore.selectedBrands.map(
-        (brand) => brand.id
+        (brand) => brand.id,
       ),
     };
 

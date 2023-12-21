@@ -22,7 +22,7 @@ const headerButtons = [
 </script>
 
 <template>
-  <div class="w-full flex justify-between md:px-14 px-5 py-4">
+  <div class="flex w-full justify-between px-5 py-4 md:px-14">
     <p class="logo-text">LOGO</p>
     <div class="flex gap-2 md:gap-6">
       <iconButton
@@ -36,6 +36,6 @@ const headerButtons = [
 
 <style scoped>
 .logo-text {
-  @apply text-[20px] md:text-[25px] font-bold;
+  @apply text-[20px] font-bold md:text-[25px];
 }
 </style>

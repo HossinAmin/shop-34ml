@@ -3,7 +3,7 @@ defineProps(["icon", "text"]);
 </script>
 
 <template>
-  <div class="flex gap-1 items-center">
+  <div class="flex items-center gap-1">
     <img
       v-if="icon"
       class="md:min-w-6 min-w-5 aspect-square"

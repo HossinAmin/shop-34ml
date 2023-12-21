@@ -15,7 +15,7 @@ defineProps({
 
 <template>
   <div
-    class="bg-surface rounded flex justify-center items-center text-xs gap-2 p-2"
+    class="flex items-center justify-center gap-2 rounded bg-surface p-2 text-xs"
   >
     <span class="whitespace-nowrap">{{ item.title }}</span>
     <img

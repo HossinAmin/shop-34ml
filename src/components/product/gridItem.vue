@@ -26,7 +26,7 @@ defineProps({
       <p class="font-bold">{{ product.default_variant.price }}</p>
     </div>
     <div
-      class="absolute top-2 right-2 md:w-9 w-6 rounded-full p-1 bg-white border-[1px] flex justify-center items-center aspect-square"
+      class="absolute right-2 top-2 flex aspect-square w-6 items-center justify-center rounded-full border-[1px] bg-white p-1 md:w-9"
     >
       <img :src="heartIcon" alt="heart-icon" />
     </div>

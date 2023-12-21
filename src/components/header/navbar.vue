@@ -19,11 +19,11 @@ const linkButtons = [
 
 <template>
   <div
-    class="w-full flex lg:justify-center gap-10 lg:bg-surface border-b-subtitle border-b-[1px] lg:py-3 pb-3 px-5"
+    class="flex w-full gap-10 border-b-[1px] border-b-subtitle px-5 pb-3 lg:justify-center lg:bg-surface lg:py-3"
   >
     <button
       v-for="button in linkButtons"
-      class="font-bold hidden lg:inline-block"
+      class="hidden font-bold lg:inline-block"
     >
       {{ button }}
     </button>
