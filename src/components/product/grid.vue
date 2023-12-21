@@ -9,7 +9,7 @@ const productsStore = useProductsStore();
 <template>
   <div
     v-if="productsStore.products"
-    class="grid grid-cols-2 md:grid-cols-4 gap-9 md:text-lg text-xs"
+    class="grid grid-cols-2 gap-9 text-xs md:grid-cols-4 md:text-lg"
   >
     <product-grid-item
       v-for="product in productsStore.products.data"
@@ -17,14 +17,14 @@ const productsStore = useProductsStore();
       :product="product"
     />
   </div>
-  <div v-else class="text-5xl font-semibold m-auto">loading....</div>
+  <div v-else class="m-auto text-5xl font-semibold">loading....</div>
 
   <!-- empty container indicator -->
   <div
     v-if="productsStore.products?.data.length === 0"
-    class="w-full flex flex-col justify-center items-center"
+    class="flex w-full flex-col items-center justify-center"
   >
-    <p class="text-4xl font-semibold py-10">No items in this page</p>
+    <p class="py-10 text-4xl font-semibold">No items in this page</p>
     <img :src="noItemImg" alt="no-item" class="w-52" />
   </div>
 </template>

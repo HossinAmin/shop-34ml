@@ -39,7 +39,7 @@ const nextPage = () => {
 </script>
 
 <template>
-  <div class="flex items-center justify-center gap-2 mr-2">
+  <div class="mr-2 flex items-center justify-center gap-2">
     <text-button
       @click="prevPage"
       :disable="currentPage === 1"

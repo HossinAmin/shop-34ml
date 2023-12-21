@@ -14,7 +14,7 @@ export const useSelectedCategoriesStore = defineStore("selected-categories", {
     },
     removeCategory(category: Category) {
       this.selectedCategories = this.selectedCategories.filter(
-        (item) => item.id !== category.id
+        (item) => item.id !== category.id,
       );
     },
   },

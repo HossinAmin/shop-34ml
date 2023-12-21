@@ -19,14 +19,14 @@ const handleInput = (event: Event) => {
 
 <template>
   <div
-    class="w-full flex items-center bg-inputBg px-3 py-2 gap-0.5 rounded-full"
+    class="flex w-full items-center gap-0.5 rounded-full bg-inputBg px-3 py-2"
   >
     <img class="mr-2" :src="searchIcon" />
     <input
-      class="flex-1 bg-transparent border-none outline-none rounded placeholder-placeholder"
+      class="flex-1 rounded border-none bg-transparent placeholder-placeholder outline-none"
       type="text"
       :value="props.modelValue"
-      @input="(e:Event) => handleInput(e)"
+      @input="(e: Event) => handleInput(e)"
       :placeholder="props.placeholder"
     />
   </div>

@@ -9,13 +9,13 @@ import filterbar from "~/components/filterbar.vue";
 </script>
 
 <template>
-  <div class="w-full flex flex-col">
+  <div class="flex w-full flex-col">
     <topbar />
     <navbar />
     <breadcrum />
-    <main class="flex w-full md:px-9 px-5 gap-5 min-h-[75rem]">
+    <main class="flex min-h-[75rem] w-full gap-5 px-5 md:px-9">
       <sidebar />
-      <div class="flex flex-col py-20 w-full">
+      <div class="flex w-full flex-col py-20">
         <filterbar />
         <products-grid />
       </div>

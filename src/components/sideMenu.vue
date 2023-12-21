@@ -36,21 +36,21 @@ const clearAllFilters = () => {
 <template>
   <IconButton class="lg:hidden" @click="toggleMenu" :icon="menuIcon" />
   <div
-    class="side-menu fixed top-0 left-0 w-full h-full bg-white flex flex-col gap-2 z-50"
+    class="side-menu fixed left-0 top-0 z-50 flex h-full w-full flex-col gap-2 bg-white"
     :class="isMenuOpen ? 'show' : ''"
   >
     <div
-      class="flex justify-between w-full border-b-subtitle px-5 py-2 border-b-[1px]"
+      class="flex w-full justify-between border-b-[1px] border-b-subtitle px-5 py-2"
     >
-      <h1 class="font-bold text-xl">Filters</h1>
+      <h1 class="text-xl font-bold">Filters</h1>
 
       <IconButton @click="closeMenu" :icon="closeIcon" />
     </div>
-    <div class="flex flex-col px-5 flex-1">
+    <div class="flex flex-1 flex-col px-5">
       <CategoryFilter />
       <Brand />
     </div>
-    <div class="flex justify-center w-full p-5 gap-3.5">
+    <div class="flex w-full justify-center gap-3.5 p-5">
       <PrimaryButton
         @click="clearAllFilters"
         class="bg-transparent !text-primary"

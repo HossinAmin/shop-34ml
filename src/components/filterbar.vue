@@ -25,9 +25,9 @@ const filterCount = computed(() => {
 </script>
 
 <template>
-  <div class="flex flex-col md:flex-row items-start md:items-center">
+  <div class="flex flex-col items-start md:flex-row md:items-center">
     <button
-      class="bg-transparent mr-4 border-none md:border-black md:border-solid md:border-[1px] md:rounded md:p-2 text-black md:flex md:items-center p-0"
+      class="mr-4 border-none bg-transparent p-0 text-black md:flex md:items-center md:rounded md:border-[1px] md:border-solid md:border-black md:p-2"
     >
       <img class="hidden md:inline" :src="filterIcon" alt="filter-icon" />
       <span class="font-bold md:hidden"> Filters {{ filterCount }} </span>
@@ -35,9 +35,9 @@ const filterCount = computed(() => {
     </button>
 
     <!-- list -->
-    <div class="flex items-center md:max-w-[45%] max-w-full">
-      <div class="overflow-x-auto scrollbar-hidden">
-        <div class="flex justify-start items-center gap-2 flex-nowrap">
+    <div class="flex max-w-full items-center md:max-w-[45%]">
+      <div class="scrollbar-hidden overflow-x-auto">
+        <div class="flex flex-nowrap items-center justify-start gap-2">
           <FilterbarItem
             v-for="category in selectedCategoriesStore.selectedCategories"
             :item="category"
@@ -51,7 +51,7 @@ const filterCount = computed(() => {
         </div>
       </div>
 
-      <p class="px-2 whitespace-nowrap">
+      <p class="whitespace-nowrap px-2">
         {{ productsStore.productsCount }} Items
       </p>
     </div>

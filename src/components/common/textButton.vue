@@ -21,7 +21,7 @@ defineProps({
   <button
     class="text-button"
     :class="`${disable ? 'disabled-button' : ''}${
-      active ? 'bg-black text-white border-black' : ''
+      active ? 'border-black bg-black text-white' : ''
     }`"
   >
     <img v-if="iconSrc" :src="iconSrc" alt="button-key" />
@@ -31,7 +31,7 @@ defineProps({
 
 <style>
 .text-button {
-  @apply flex justify-center items-center md:w-10 w-8 aspect-square rounded-md border-subtitle border-[1px] hover:opacity-50;
+  @apply flex aspect-square w-8 items-center justify-center rounded-md border-[1px] border-subtitle hover:opacity-50 md:w-10;
 }
 .disabled-button {
   @apply cursor-not-allowed opacity-50;
