@@ -9,6 +9,7 @@ import { useSelectedBrandsStore } from "./useSelectedBrandsStore";
 import { useSelectedCategoriesStore } from "./useSelectedCategoriesStore";
 
 const api = "https://joulia.dashboard.hamburgermenu.app/api/v1/products";
+let debounceTimerId: NodeJS.Timeout | null = null;
 
 export const useProductsStore = defineStore("products-store", () => {
   const products = ref<BaseResponse<Product[]> | null>(null);
@@ -40,7 +41,13 @@ export const useProductsStore = defineStore("products-store", () => {
     };
 
     const customAPI = buildApiUrl(api, params);
-    fetchProducts(customAPI);
+
+    if (debounceTimerId) {
+      clearTimeout(debounceTimerId);
+      debounceTimerId = setTimeout(() => fetchProducts(customAPI), 500);
+    } else {
+      debounceTimerId = setTimeout(() => fetchProducts(customAPI), 500);
+    }
   });
 
   return { products, productsCount, fetchProducts };
